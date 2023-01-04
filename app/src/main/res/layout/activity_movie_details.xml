@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".presentation.activities.MovieDetailsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            style="@style/movieDetailsTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/background"
+            app:collapsedTitleTextColor="@color/yellow"
+            app:expandedTitleTextColor="@color/yellow"
+            app:expandedTitleMarginBottom="10dp"
+            app:expandedTitleMarginStart="8dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <ImageView
+                android:id="@+id/movieImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Platform.MaterialComponents.Light" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:barrierMargin="1dp"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/movie_title_text"
+                style="@style/movieDetailsTextStyle"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/background_text"
+                android:padding="8dp"
+                android:text="Рейтинг"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/movie_title"
+                style="@style/MovieDetailsTextStaleItalic"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:background="@color/white"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/movie_rating_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/movie_rating_text"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/movie_vote_count_text"
+                style="@style/movieDetailsTextStyle"
+                android:layout_marginTop="4dp"
+                android:background="@color/background_text"
+                android:padding="8dp"
+                android:text="Проголосовали"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/movie_title_text"
+                app:layout_constraintTop_toBottomOf="@+id/movie_title_text" />
+
+            <TextView
+                android:id="@+id/movie_vote_count"
+                style="@style/MovieDetailsTextStaleItalic"
+                android:layout_marginTop="4dp"
+                android:background="@color/white"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/movie_vote_count_text"
+                app:layout_constraintEnd_toEndOf="@id/movie_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/movie_title"
+                app:layout_constraintTop_toBottomOf="@+id/movie_title_text"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/movie_rating_text"
+                style="@style/movieDetailsTextStyle"
+                android:layout_marginTop="4dp"
+                android:background="@color/background_text"
+                android:padding="8dp"
+                android:text="Название фильма"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/movie_vote_count_text"
+                app:layout_constraintTop_toBottomOf="@+id/movie_vote_count_text" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/movie_ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="180dp"
+                android:layout_height="34dp"
+                android:layout_marginBottom="4dp"
+                android:max="10"
+                android:numStars="10"
+                android:progress="5"
+                android:progressTint="@color/yellow"
+                android:rating="5"
+                app:layout_constraintBottom_toBottomOf="@+id/movie_title_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/movie_title_text" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/playerGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_rating_text">
+
+                <TextView
+                    android:id="@+id/videoText"
+                    style="@style/movieDetailsTextStyle2"
+                    android:layout_marginTop="16dp"
+                    android:text="Трейлеры и фрагменты"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtubePlayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    app:autoPlay="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/videoText"
+                    app:showFullScreenButton="false" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/actors_text"
+                style="@style/movieDetailsTextStyle2"
+                android:layout_marginTop="8dp"
+                android:text="Актеры"
+                app:layout_constraintEnd_toEndOf="@+id/movie_ratingBar"
+                app:layout_constraintStart_toStartOf="@+id/movie_rating_text"
+                app:layout_constraintTop_toBottomOf="@+id/playerGroup" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_actors_in_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@+id/actors_text"
+                app:layout_constraintStart_toStartOf="@+id/actors_text"
+                app:layout_constraintTop_toBottomOf="@+id/actors_text" />
+
+            <TextView
+                android:id="@+id/textSimilarMovie"
+                style="@style/movieDetailsTextStyle2"
+                android:layout_marginTop="8dp"
+                android:text="Похожие фильмы"
+                app:layout_constraintEnd_toEndOf="@+id/rv_actors_in_movie"
+                app:layout_constraintStart_toStartOf="@+id/rv_actors_in_movie"
+                app:layout_constraintTop_toBottomOf="@+id/rv_actors_in_movie" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_similar_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@+id/rv_actors_in_movie"
+                app:layout_constraintStart_toStartOf="@+id/rv_actors_in_movie"
+                app:layout_constraintTop_toBottomOf="@+id/textSimilarMovie" />
+
+            <TextView
+                android:id="@+id/textRecommendMovie"
+                style="@style/movieDetailsTextStyle2"
+                android:layout_marginTop="8dp"
+                android:text="Рекомендуемые"
+                app:layout_constraintEnd_toEndOf="@+id/rv_similar_movie"
+                app:layout_constraintStart_toStartOf="@+id/rv_similar_movie"
+                app:layout_constraintTop_toBottomOf="@+id/rv_similar_movie" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommend_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@+id/rv_similar_movie"
+                app:layout_constraintStart_toStartOf="@+id/rv_similar_movie"
+                app:layout_constraintTop_toBottomOf="@+id/textRecommendMovie" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

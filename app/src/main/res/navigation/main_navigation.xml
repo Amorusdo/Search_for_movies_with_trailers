@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav">
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.example.movirapp.presentation.fragments.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" />
+    <fragment
+        android:id="@+id/savedMovieFragment"
+        android:name="com.example.movirapp.presentation.fragments.SavedMovieFragment"
+        android:label="fragment_saved_movie"
+        tools:layout="@layout/fragment_saved_movie" />
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.example.movirapp.presentation.fragments.PersonFragment"
+        android:label="fragment_person"
+        tools:layout="@layout/fragment_person" />
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="com.example.movirapp.presentation.fragments.SearchMovieFragment"
+        android:label="fragment_search_movie"
+        tools:layout="@layout/fragment_search_movie" />
+</navigation>
